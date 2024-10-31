@@ -5,8 +5,8 @@ from xgboost import XGBRegressor
 from sklearn.metrics import mean_absolute_error
 
 # housing data
-X = pd.read_csv("data/housing_prices/train.csv", index_col = "Id")
-X_test_full = pd.read_csv("data/housing_prices/test.csv", index_col = "Id")
+X = pd.read_csv("data/housing_prices/train.csv", index_col ="Id")
+X_test_full = pd.read_csv("data/housing_prices/test.csv", index_col ="Id")
 
 # remove rows with missing target, separate target from predictors
 X.dropna(axis = 0, subset = ["SalePrice"], inplace = True)
