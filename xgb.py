@@ -5,8 +5,8 @@ from xgboost import XGBRegressor
 from sklearn.metrics import mean_absolute_error
 
 # housing data
-X = pd.read_csv("../datasets/housing_prices/train.csv", index_col = "Id")
-X_test_full = pd.read_csv("../datasets/housing_prices/test.csv", index_col = "Id")
+X = pd.read_csv("data/housing_prices/train.csv", index_col = "Id")
+X_test_full = pd.read_csv("data/housing_prices/test.csv", index_col = "Id")
 
 # remove rows with missing target, separate target from predictors
 X.dropna(axis = 0, subset = ["SalePrice"], inplace = True)
@@ -14,7 +14,9 @@ y = X.SalePrice
 X.drop(["SalePrice"], axis = 1, inplace = True)
 
 # Break off validation set from training data
-X_train_full, X_valid_full, y_train, y_valid = train_test_split(X, y, train_size=0.8, test_size=0.2,
+X_train_full, X_valid_full, y_train, y_valid = train_test_split(X, y,
+                                                                train_size=0.8,
+                                                                test_size=0.2,
                                                                 random_state=0)
 
 # Select categorical columns with relatively low cardinality (convenient but arbitrary)
